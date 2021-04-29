@@ -3,7 +3,13 @@
 include('../private/initialize.php');
 include('../private/customers_array.php');
 
-$customers = $all_customers;
+$per_page = 20;
+
+$current_page = (int) ($_GET['page'] ?? 1);
+
+$offset = $per_page * ($current_page - 1);
+
+$customers = array_slice($all_customers, $offset, $per_page);
 
 ?>
 
@@ -15,7 +21,7 @@ $customers = $all_customers;
     <link rel="stylesheet" href="stylesheets/public.css">
   </head>
   <body>
-  
+
     <h1>Customer List</h1>
 
     <table id="customer-list">
@@ -35,7 +41,7 @@ $customers = $all_customers;
       }
 
       ?>
-  
+
     </table>
 
   </body>
