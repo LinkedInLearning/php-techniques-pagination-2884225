@@ -60,7 +60,17 @@ $customers = array_slice($all_customers, $offset, $per_page);
         echo "<a href=\"customers.php?page=" . ($current_page - 1) . "\">&larr; Previous</a>";
       }
       ?>
-      |
+
+      <?php
+      for($i=1; $i <= $total_pages; $i++) {
+        if($current_page == $i) {
+          echo "<strong>{$i}</strong> ";
+        } else {
+          echo "<a href=\"customers.php?page={$i}\">{$i}</a> ";
+        }
+      }
+      ?>
+
       <?php
       if($current_page < $total_pages) {
         echo "<a href=\"customers.php?page=" . ($current_page + 1) . "\">Next &rarr;</a>";
