@@ -51,6 +51,20 @@ $customers = find_customers($per_page, $offset);
       ?>
     </table>
 
+    <p class="pagination">
+      <?php
+      if($current_page > 1) {
+        echo "<a href=\"customers.php?page=" . ($current_page - 1) . "\">&larr; Previous</a>";
+      }
+      ?>
+      |
+      <?php
+      if($current_page < $total_pages) {
+        echo "<a href=\"customers.php?page=" . ($current_page + 1) . "\">Next &rarr;</a>";
+      }
+      ?>
+    </p>
+
   </body>
 </html>
 
