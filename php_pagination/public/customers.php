@@ -59,7 +59,17 @@ $customers = find_customers($per_page, $offset);
       ?>
 
       <?php
+      $win = 2; // window size
+      $gap = false;
       for($i=1; $i <= $total_pages; $i++) {
+        if($i > 1 + $win && $i < $total_pages - $win && abs($i - $current_page) > $win) {
+          if(!$gap) {
+            echo "... ";
+            $gap = true;
+          }
+          continue;
+        }
+        $gap = false;
         if($current_page == $i) {
           echo "<strong>{$i}</strong> ";
         } else {
