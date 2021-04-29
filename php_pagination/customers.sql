@@ -1,4 +1,4 @@
-/* CREATE DATABASE pagination; */
+/* CREATE DATABASE php_pagination; */
 
 CREATE TABLE customers (
   id int(11) NOT NULL auto_increment,
