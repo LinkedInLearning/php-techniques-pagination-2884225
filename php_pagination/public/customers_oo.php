@@ -42,11 +42,7 @@ $customers = find_customers($pagination->per_page, $pagination->offset());
       ?>
     </table>
 
-    <p class="pagination">
-      <?php echo $pagination->previous_link('customers_oo.php'); ?>
-      |
-      <?php echo $pagination->next_link('customers_oo.php'); ?>
-    </p>
+    <?php echo $pagination->page_links('customers_oo.php'); ?>
 
   </body>
 </html>

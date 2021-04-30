@@ -51,6 +51,40 @@ class Pagination {
     return $link;
   }
 
+  public function number_links($url='', $window=2) {
+    $output = '';
+    $win = (int) $window;
+    $gap = false;
+    for($i=1; $i <= $this->total_pages(); $i++) {
+      if($win > 0 && $i > 1 + $win && $i < $this->total_pages() - $win && abs($i - $this->current_page) > $win) {
+        if(!$gap) {
+          $output .= "... ";
+          $gap = true;
+        }
+        continue;
+      }
+      $gap = false;
+      if($this->current_page == $i) {
+        $output .= "<strong>{$i}</strong> ";
+      } else {
+        $output .= "<a href=\"{$url}?page={$i}\">{$i}</a> ";
+      }
+    }
+    return $output;
+  }
+
+  public function page_links($url="") {
+    $output = '';
+    if($this->total_pages() > 1) {
+      $output .= "<p class=\"pagination\">";
+      $output .= $this->previous_link('customers_oo.php');
+      $output .= $this->number_links('customers_oo.php');
+      $output .= $this->next_link('customers_oo.php');
+      $output .= "</p>";
+    }
+    return $output;
+  }
+
 }
 
 ?>
